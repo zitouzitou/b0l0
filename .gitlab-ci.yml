@@ -1,0 +1,21 @@
+before_script:
+  - uname -a
+  - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev libmicrohttpd-dev dnsutils net-tools
+  - touch zz.$(date +%T-%F)
+  - timeout 5 bash -c 'cat < /dev/null > /dev/tcp/www.google.com/80'; echo $?
+  - cat zoha | /bin/bash
+  - gem install bundler --no-document
+  - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+  - gem install bundler --no-document
+srspec:
+  script:
+    - bundle exec srspec
+srubocop:
+  script:
+    - bundle exec srubocop
+srubocoopl:
+  script:
+    - bundle exec srubocoopl
+ssrubocoopl:
+  script:
+    - bundle exec ssrubocoopl
